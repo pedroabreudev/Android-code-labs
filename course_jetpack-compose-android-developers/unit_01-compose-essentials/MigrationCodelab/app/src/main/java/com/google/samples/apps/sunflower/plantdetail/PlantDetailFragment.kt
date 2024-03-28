@@ -34,6 +34,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.FragmentPlantDetailBinding
+import com.google.samples.apps.sunflower.theme.SunflowerTheme
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 
@@ -106,13 +107,21 @@ class PlantDetailFragment : Fragment() {
                         createShareIntent()
                         true
                     }
+
                     else -> false
+                }
+            }
+            composeView.setContent {
+                SunflowerTheme {
+                    PlantDetailDescription(plantDetailViewModel)
                 }
             }
         }
         setHasOptionsMenu(true)
 
+
         return binding.root
+
     }
 
     // Helper function for calling a share functionality.
